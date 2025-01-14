@@ -1,5 +1,6 @@
 package ru.netology.moneytransferservice.service;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import ru.netology.moneytransferservice.exception.TransferException;
@@ -9,8 +10,6 @@ import ru.netology.moneytransferservice.model.TransferRequest;
 import ru.netology.moneytransferservice.model.TransferResponse;
 import ru.netology.moneytransferservice.repository.TransferRepository;
 import ru.netology.moneytransferservice.util.FileLogger;
-
-import java.io.IOException;
 
 @Service
 public class TransferService {
@@ -25,8 +24,8 @@ public class TransferService {
         this.fileLogger = fileLogger;
     }
 
-    public TransferResponse execute(TransferRequest request)
-            throws TransferException, IOException {
+    public TransferResponse execute(@NotNull TransferRequest request)
+            throws TransferException {
         // Логика перевода средств
         String result = "SUCCESS";
         double commission = calculateCommission(request.getAmount());
@@ -44,8 +43,8 @@ public class TransferService {
         return new TransferResponse(result);
     }
 
-    public boolean confirmOperation(ConfirmationRequest request)
-            throws TransferException, IOException {
+    public boolean confirmOperation(@NotNull ConfirmationRequest request)
+            throws TransferException {
         // Получаем запись о переводе по operationId
         TransferRecord record = transferRepository.findByOperationId(request.getOperationId())
                 .orElseThrow(() -> new TransferException(404, "Operation not found"));
