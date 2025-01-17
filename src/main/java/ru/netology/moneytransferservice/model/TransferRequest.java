@@ -5,6 +5,8 @@ import lombok.Data;
 @Data
 public class TransferRequest {
     private String cardFrom;
+    private String cardFromValidTill;
+    private String cardFromCVV;
     private String cardTo;
-    private double amount;
+    private Amount amount;
 }

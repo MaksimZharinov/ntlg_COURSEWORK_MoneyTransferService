@@ -4,9 +4,9 @@ import lombok.Data;
 
 @Data
 public class TransferResponse {
-    private String result;
+    private String operationId;
 
-    public TransferResponse(String result) {
-        this.result = result;
+    public TransferResponse(String operationId) {
+        this.operationId = operationId;
     }
 }

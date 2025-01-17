@@ -8,8 +8,6 @@ import ru.netology.moneytransferservice.model.TransferRequest;
 import ru.netology.moneytransferservice.model.TransferResponse;
 import ru.netology.moneytransferservice.service.TransferService;
 
-import java.io.IOException;
-
 @RestController
 public class TransferController {
 
@@ -21,7 +19,7 @@ public class TransferController {
 
     @PostMapping("/transfer")
     public TransferResponse transfer(@RequestBody TransferRequest request)
-            throws TransferException, IOException {
+            throws TransferException {
         return transferService.execute(request);
     }
 }
