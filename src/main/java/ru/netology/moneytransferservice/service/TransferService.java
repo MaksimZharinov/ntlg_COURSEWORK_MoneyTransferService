@@ -7,7 +7,7 @@ import ru.netology.moneytransferservice.exception.TransferException;
 import ru.netology.moneytransferservice.model.Amount;
 import ru.netology.moneytransferservice.model.TransferRequest;
 import ru.netology.moneytransferservice.model.TransferResponse;
-import ru.netology.moneytransferservice.repository.Repository;
+import ru.netology.moneytransferservice.repository.TransferRepository;
 import ru.netology.moneytransferservice.util.FileLogger;
 
 import java.util.UUID;
@@ -17,11 +17,11 @@ public class TransferService {
 
     @Value("${application.fee}")
     private double fee;
-    private final Repository repository;
+    private final TransferRepository transferRepository;
     private final FileLogger fileLogger;
 
-    public TransferService(Repository repository, FileLogger fileLogger) {
-        this.repository = repository;
+    public TransferService(TransferRepository transferRepository, FileLogger fileLogger) {
+        this.transferRepository = transferRepository;
         this.fileLogger = fileLogger;
     }
 
@@ -40,7 +40,7 @@ public class TransferService {
                 result
         );
 
-        repository.save(request, result, operationId);
+        transferRepository.save(request, result, operationId);
 
         return new TransferResponse(operationId);
     }

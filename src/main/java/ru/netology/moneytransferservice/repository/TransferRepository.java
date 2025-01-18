@@ -1,5 +1,6 @@
 package ru.netology.moneytransferservice.repository;
 
+import org.springframework.stereotype.Repository;
 import ru.netology.moneytransferservice.model.RepoModel;
 import ru.netology.moneytransferservice.model.TransferRecord;
 import ru.netology.moneytransferservice.model.TransferRequest;
@@ -9,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@org.springframework.stereotype.Repository
-public class Repository {
+@Repository
+public class TransferRepository {
 
     private RepoModel repo;
 
