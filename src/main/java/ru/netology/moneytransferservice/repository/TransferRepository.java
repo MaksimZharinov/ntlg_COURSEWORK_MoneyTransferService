@@ -16,7 +16,7 @@ public class TransferRepository {
     private RepoModel repo;
 
     public void save(TransferRequest request, String result, String operationId) {
-        var record = new TransferRecord(operationId, LocalDateTime.now(), request, result);
+        TransferRecord record = new TransferRecord(operationId, LocalDateTime.now(), request, result);
         repo.addData(operationId, record);
     }
 
