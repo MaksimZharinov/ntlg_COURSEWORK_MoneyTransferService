@@ -22,7 +22,7 @@ public class ConfirmationService {
     private final FileLogger fileLogger;
     private final CardRepository cardRepository;
     private ExecutorService executorService;
-    private Commission commission;
+    private final Commission commission;
 
     public ConfirmationService(TransferRepository transferRepository,
                                CardRepository cardRepository,
